@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "product")
+@NamedQueries({
+        @NamedQuery(name = "Product.retrieveAll", query = "SELECT DISTINCT c FROM Product c"),
+})
 public class Product {
 
     private long id;

@@ -1,20 +1,34 @@
 version: '3'
 services:
-  elasticsearch:
-    image: elasticsearch:6.4.1
-    ports:
-      - 9200:9200
-      - 9300:9300
-    environment:
-      - discovery.type=single-node
-  kibana:
-    image: kibana:6.4.1
-    ports:
-      - 5601:5601
+#  elasticsearch:
+#    image: elasticsearch:6.4.1
+#    container_name: elastic
+#    ports:
+#      - 9200:9200
+#      - 9300:9300
+#    environment:
+#      - discovery.type=single-node
+#  kibana:
+#    image: kibana:6.4.1
+#    container_name: kibana
+#    ports:
+#      - 5601:5601
   postgres:
     image: postgres:latest
+    container_name: postgres
     environment:
       - POSTGRES_PASSWORD=password
 #      - PGDATA=/postgres
     ports:
       - 5432:5432
+#  demo:
+#    image: demo:0.0.1-SNAPSHOT
+#    ports:
+#      - 8080:8080
+#    depends_on:
+#      - postgres
+
+#networks:
+#  default:
+#    external:
+#      name: demo_network
