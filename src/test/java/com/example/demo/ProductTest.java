@@ -1,8 +1,6 @@
 package com.example.demo;
 
-import com.example.demo.model.Product;
-import com.example.demo.model.ProductRepository;
-import com.example.demo.model.ProductService;
+import com.example.demo.model.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,10 +12,19 @@ public class ProductTest {
     @Autowired
 //    private ProductService productService;
     private ProductRepository productService;
+    @Autowired
+    private IngredientRepository ingredientService;
 
     @Test
     public void whenApplicationStarts_thenHibernateCreatesInitialRecords() {
-        Product product = new Product("egg", "st");
-        productService.save(product);
+        Product product1 = new Product("egg", "st");
+        Product product2 = new Product("milk", "dl");
+        productService.save(product1);
+        productService.save(product2);
+        Ingredient eggs = new Ingredient(product1,2.0,"st");
+        Ingredient milk = new Ingredient(product2,5.0,"dl");
+        ingredientService.save(milk);
+        ingredientService.save(eggs);
+
     }
 }
